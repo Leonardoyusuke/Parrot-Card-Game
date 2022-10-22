@@ -6,22 +6,47 @@
     height: 629px;
     align-items: center;
 }
-.imagem {
+ img {
     width: 100px;
     height: 100px;
-    margin-top: 20px;
-    margin-left: 10px;
+   
+}
+.cartas{
+    display: flex;
+    flex-direction: row
+    
 }
 .carta {
     background-color: #99CEA8;
     margin: 15px;
     width: 117px;
+    height: 146px; 
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+   
+}
+.face1{
+    position: relative;
+    margin: 15px;
+    width: 117px;
     height: 146px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+.frente, .traseira {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .cartas1 {
     display:flex;
     flex-direction: row;
     margin-top: 50px;
+    flex-wrap: wrap;
 }
 .titulo{
     height: 63px;
