@@ -16,18 +16,18 @@
     flex-direction: row
     
 }
-.carta {
+.face {
     background-color: #99CEA8;
     margin: 15px;
     width: 117px;
     height: 146px; 
     border-radius: 10px;
     backface-visibility: hidden;
-    transition: all .5s;
+    transition: all 1s;
     transform-style: preserve-3d;
    
 }
-.face1{
+.card{
     position: relative;
     margin: 15px;
     width: 117px;
@@ -35,7 +35,7 @@
     margin-right: 40px;
     margin-left: 40px;
 }
-.frente, .traseira {
+.front-face, .back-face {
     position: absolute;
     display: flex;
     align-items: center;
@@ -61,6 +61,15 @@
     color: #75B79E;
     margin-top: 30px;
 }
+.virar .back-face {
+    transform: rotateY(0deg);
+  }
+
+ .virar .front-face {
+    transform: rotateY(-180deg); 
+}
+
+
 @media (max-width: 767px){
     .tudo {
         background-color: #EEF9BF;
