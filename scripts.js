@@ -31,7 +31,7 @@ function pergunta(){ // pergunta cartas
     const lista = document.querySelector(".cartas1");
     for(let i = 0; i < numeroCartas ; i++){
         lista.innerHTML +=`
-        <div class="card" onclick="virarCarta(this)">
+        <div class="card ${qntcartasdif[i]}" onclick="virarCarta(this)">
             <div class="back-face face ${qntcartasdif[i]}" >
             <img id="foto" src="./imagens/${qntcartasdif[i]}">
             </div>
@@ -46,35 +46,48 @@ function pergunta(){ // pergunta cartas
 qntcartasdif.sort(comparador);
 let checar = 0
 let checar2;
-let cartas1;
-let cartas2;
-let lista;
+let carta1;
+let carta2;
+let cartasIguais=0
 
 function virarCarta(cards){   
-    cards.classList.add("virar");
-    checar = checar + 1
-    console.log(checar)
-
-    const checarCarta = document.querySelectorAll(".virarCarta[0]")
-    const checarCarta2 = document.querySelectorAll(".virarCarta[1]")
-
-    if(checarCarta = checarCarta2){
-        checar = 0}
-
-    else if (checar == 2){
-    setTimeout(desvirarCarta, 2000)
-    checar = 0}
-    
+    if(checar == 0) {
+        cards.classList.add("virar");
+        checar = 1 
+        carta1 = cards;
+    }
+    else if (checar == 1){
+        cards.classList.add("virar");
+        checar = 0;
+        carta2 = cards;
+        jogadas = jogadas+2;
+        console.log(jogadas)
+        setTimeout(compararCartas, 1000)
+    }
 }
 
-function desvirarCarta(){
-     cards = document.getElementsByClassName("virar");
 
-    for(let indice = 0; indice < cards.length; indice++){
-        cards[indice].classList.remove("virar");
-        cards[indice].classList.remove("virar");
-        
-    }}
+function compararCartas(cartaVirada){
+    if (carta1.classList.value == carta2.classList.value){
+        cartasIguais= cartasIguais +2;
+        console.log(cartasIguais);
+        comparando()
+    }
+    else desvirarCarta()
+}
+function desvirarCarta(){
+    carta1.classList.remove("virar")
+    carta2.classList.remove("virar")   
+}
+function comparando(){
+ if(cartasIguais == numeroCartas ){
+    fim()
+ }
+}
+function fim(){
+    alert(`Você ganhou em ${jogadas} jogadas!`)
+
+}
 function comparador() { 
     return Math.random() - 0.5; 
 }
